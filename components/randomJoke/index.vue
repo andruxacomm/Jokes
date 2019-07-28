@@ -8,7 +8,7 @@
             </template>
 
             <template v-if="item.updated_at">
-                <p class="randomJoke__date">{{ new Date(item.updated_at) }}</p>
+                <p class="randomJoke__date">{{ parseDate(item.updated_at) }}</p>
             </template>
 
             <select name="type"
@@ -38,11 +38,25 @@
 </template>
 
 <script>
+    import date from '../../mixins/date';
+
     export default {
         name: "RandomJoke",
 
+        mixins: [
+            date,
+        ],
+
         mounted() {
-            this.$set(this, 'value', this.categories[0].value);
+            if (this.$route.query.hasOwnProperty('category') && this.$route.query.category !== '') {
+                this.categories.forEach(item => {
+                    if (item.value === this.$route.query.category) {
+                        this.$set(this, 'value', item.value);
+                    }
+                })
+            } else {
+                this.$set(this, 'value', this.categories[0].value);
+            }
         },
 
         data() {

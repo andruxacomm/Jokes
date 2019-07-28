@@ -50,13 +50,19 @@
             async search(e) {
                 if (e.hasOwnProperty('search')) {
                     await this.$store.dispatch('jokes/getData', `query=${e.search}`);
+
                     this.$router.push({query: {q: e.search}});
                 }
             },
 
             async changeCategory(e) {
                 await this.$store.dispatch('jokes/getRandom', `category=${e}`);
+
                 this.$router.push({query: {category: e}});
+            },
+
+            mergeQuery() {
+
             }
         },
 

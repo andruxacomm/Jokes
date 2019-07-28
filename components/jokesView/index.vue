@@ -11,7 +11,7 @@
                 </template>
 
                 <template v-if="item.updated_at">
-                    <p class="jokesView__date">{{ new Date(item.updated_at) }}</p>
+                    <p class="jokesView__date">{{ parseDate(item.updated_at) }}</p>
                 </template>
             </div>
 
@@ -31,15 +31,21 @@
 </template>
 
 <script>
+    import date from '../../mixins/date'
+
     export default {
         name: "JokesView",
+
+        mixins: [
+            date,
+        ],
 
         props: {
             items: {
                 type: Array,
                 required: true,
             }
-        }
+        },
     }
 </script>
 

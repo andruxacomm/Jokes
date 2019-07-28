@@ -98,7 +98,6 @@ export const actions = {
             .then(response => {
                 context.commit('setRandomJoke', response.data)
             });
-
     }
 };
 

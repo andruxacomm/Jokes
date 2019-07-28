@@ -1,0 +1,171 @@
+@import "vars";
+@import "mixins";
+
+
+* {
+    outline: none;
+    box-sizing: border-box;
+}
+
+html, body {
+    height: 100%;
+}
+
+input[type='text'],
+input[type='number'],
+textarea {
+    font-size: 16px !important;
+}
+
+h1, h2, h3, h4 {
+    padding: 0;
+    margin: 0;
+    text-align: left;
+}
+
+figure {
+    margin: 0;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+}
+
+p {
+    margin: 0;
+    font-size: 18px;
+    font-weight: 400;
+    color: $black;
+
+    @include below($phone-wide) {
+        font-size: 16px;
+    }
+}
+
+a {
+    text-decoration: none;
+    color: #000000;
+    outline: none;
+    cursor: pointer;
+}
+
+li, ul {
+    cursor: default;
+    padding: 0;
+    margin: 0;
+}
+
+button {
+    border: 0;
+    background: none;
+    box-shadow: none;
+    cursor: pointer;
+
+    padding: 0;
+}
+
+input {
+    text-overflow: ellipsis;
+
+    width: 100%;
+}
+
+input[type=number]::-webkit-inner-spin-button,
+input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+input[type="number"] {
+    -moz-appearance: textfield;
+}
+
+input[type="number"]:hover,
+input[type="number"]:focus {
+    -moz-appearance: number-input;
+}
+
+input[type="number"]::-webkit-outer-spin-button,
+input[type="number"]::-webkit-inner-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+textarea {
+    resize: none;
+}
+.container {
+    max-width: 1172px;
+    width: 100%;
+    margin: 0 auto;
+
+    @media screen and (max-width: $sm-desktop) {
+        max-width: 940px;
+    }
+
+    @media screen and (max-width: $tablet) {
+        padding: 0 25px;
+        max-width: 100%;
+    }
+
+    @media screen and (max-width: $phone-wide) {
+        padding: 0 15px;
+    }
+
+    @media screen and (max-width: $phone) {
+        padding: 0 10px;
+    }
+
+    &.notIndex {
+        padding-top: 65px;
+    }
+}
+
+.h1 {
+    font-size: 35px;
+    font-family: $BebasNeue;
+    font-weight: 400;
+    color: $black;
+
+    @include below($tablet) {
+        font-size: 22px;
+    }
+
+    @include below($phone) {
+        font-size: 18px;
+    }
+}
+
+//animations
+.page-enter-active {
+    transition: opacity .4s;
+}
+
+.page-enter {
+    opacity: 0;
+}
+
+.page-leave-active {
+    display: none;
+}
+
+.none-enter-active, .none-leave-active {
+    transition: none;
+}
+
+.none-enter, .none-leave-active {
+    display: none;
+}
+
+.fade-enter-active, .fade-leave-active {
+    transition: opacity .2s;
+}
+
+.fade-enter, .fade-leave-to {
+    opacity: 0;
+}
+
+#__nuxt, #__layout {
+    height: 100%;
+}

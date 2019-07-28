@@ -24,11 +24,16 @@ export default {
     /*
     ** Global CSS
     */
-    css: [],
+    css: [
+        {src: 'assets/app.scss', lang: 'scss'},
+    ],
     /*
     ** Plugins to load before mounting the App
     */
-    plugins: [],
+    plugins: [
+        // custom components
+        '~/plugins/btn',
+    ],
     /*
     ** Nuxt.js dev-modules
     */
@@ -38,14 +43,20 @@ export default {
     */
     modules: [
         '@nuxtjs/style-resources',
+        '@nuxtjs/axios',
     ],
 
     styleResources: {
         scss: [
-            'assets/scss/vars.scss',
-            'assets/scss/mixins.scss'
+            'assets/vars.scss',
+            'assets/mixins.scss'
         ]
     },
+
+    axios: {
+        baseURL: 'https://api.chucknorris.io/',
+    },
+
     /*
     ** Build configuration
     */

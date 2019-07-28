@@ -11,10 +11,21 @@
     "generate": "nuxt generate"
   },
   "dependencies": {
+    "@nuxtjs/axios": "^5.5.4",
     "@nuxtjs/style-resources": "^0.1.2",
-    "nuxt": "^2.0.0"
+    "nuxt": "^2.0.0",
+    "nuxt-sass-resources-loader": "^2.0.5"
   },
   "devDependencies": {
-    "nodemon": "^1.18.9"
+    "vue-loader": "^15.7.1",
+    "vue-template-compiler": "^2.6.10",
+    "@babel/preset-env": "^7.4.3",
+    "@nuxtjs/style-resources": "^0.1.2",
+    "babel-core": "^7.0.0-0",
+    "babel-eslint": "^9.0.0",
+    "node-sass": "^4.12.0",
+    "nodemon": "^1.18.11",
+    "nuxt-sass-resources-loader": "^2.0.5",
+    "sass-loader": "^7.1.0"
   }
 }

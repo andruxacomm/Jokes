@@ -50,11 +50,12 @@
             async search(e) {
                 if (e.hasOwnProperty('search') && e.search !== '') {
                     await this.$store.dispatch('jokes/getData', `query=${e.search}`);
+
                     this.pushQuery(e);
                 } else {
                     this.$router.push({query: {}});
-                    this.$store.commit('jokes/setJokes', null);
                     await this.$store.dispatch('jokes/getRandom');
+                    this.$store.commit('jokes/setJokes', null);
                 }
             },
 

@@ -99,7 +99,6 @@ export const actions = {
         await this.$axios.get(`jokes/random?${query}`)
             .then(response => {
                 context.commit('setRandomJoke', response.data);
-                console.log(response.data);
             });
     }
 };

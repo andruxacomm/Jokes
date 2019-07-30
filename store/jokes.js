@@ -62,8 +62,6 @@ export const actions = {
                 } else {
                     context.commit('setJokes', response.data.result);
                     context.commit('setTotal', null);
-
-                    await context.dispatch('getRandom');
                 }
 
             })

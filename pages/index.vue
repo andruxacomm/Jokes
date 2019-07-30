@@ -48,7 +48,7 @@
 
         methods: {
             async search(e) {
-                if (e.hasOwnProperty('search') && e.search !== '') {
+                if (e.hasOwnProperty('search') && !['', null].includes(e.search)) {
                     await this.$store.dispatch('jokes/getData', `query=${e.search}`);
 
                     this.pushQuery(e);

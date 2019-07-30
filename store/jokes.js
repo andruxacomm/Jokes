@@ -60,7 +60,7 @@ export const actions = {
                     context.commit('setJokes', response.data.result);
                     context.commit('setTotal', response.data.total);
                 } else {
-                    context.commit('setJokes', null);
+                    context.commit('setJokes', response.data.result);
                     context.commit('setTotal', null);
 
                     await context.dispatch('getRandom');
@@ -75,6 +75,7 @@ export const actions = {
     },
 
     async getRandom(context, query = '') {
+
         await this.$axios.get('jokes/categories')
             .then(response => {
                 let categories = [
@@ -94,9 +95,11 @@ export const actions = {
                 context.commit('setCategories', categories)
             });
 
+
         await this.$axios.get(`jokes/random?${query}`)
             .then(response => {
-                context.commit('setRandomJoke', response.data)
+                context.commit('setRandomJoke', response.data);
+                console.log(response.data);
             });
     }
 };

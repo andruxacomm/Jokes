@@ -33,6 +33,7 @@ export default {
     plugins: [
         // custom components
         '~/plugins/btn',
+        '~/plugins/axios.js',
     ],
     /*
     ** Nuxt.js dev-modules

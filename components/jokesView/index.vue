@@ -1,33 +1,42 @@
 <template>
-    <ul class="jokesView">
-        <li class="jokesView__item"
-            v-for="item in items"
-            :key="item.id">
-            <div class="jokesView__head">
-                <template v-if="item.icon_url">
-                    <img :src="item.icon_url"
-                         :alt="item.url"
-                         class="jokesView__icon">
-                </template>
 
-                <template v-if="item.updated_at">
-                    <p class="jokesView__date">{{ parseDate(item.updated_at) }}</p>
-                </template>
-            </div>
+    <div class="jokesView">
+        <template v-if="items.length > 0">
+            <ul>
+                <li class="jokesView__item"
+                    v-for="item in items"
+                    :key="item.id">
+                    <div class="jokesView__head">
+                        <template v-if="item.icon_url">
+                            <img :src="item.icon_url"
+                                 :alt="item.url"
+                                 class="jokesView__icon">
+                        </template>
 
-            <template v-if="item.value">
-                <p class="jokesView__text">
-                    {{ item.value }}
-                </p>
-            </template>
+                        <template v-if="item.updated_at">
+                            <p class="jokesView__date">{{ parseDate(item.updated_at) }}</p>
+                        </template>
+                    </div>
 
-            <template v-if="item.url">
-                <a :href="item.url"
-                   class="jokesView__link"
-                   target="_blank"></a>
-            </template>
-        </li>
-    </ul>
+                    <template v-if="item.value">
+                        <p class="jokesView__text">
+                            {{ item.value }}
+                        </p>
+                    </template>
+
+                    <template v-if="item.url">
+                        <a :href="item.url"
+                           class="jokesView__link"
+                           target="_blank"></a>
+                    </template>
+                </li>
+            </ul>
+        </template>
+
+        <template v-else>
+            <p class="jokesView__emptyText">Упс..</p>
+        </template>
+    </div>
 </template>
 
 <script>
@@ -95,6 +104,11 @@
         &__date {
             font-size: 14px;
             font-weight: 300;
+        }
+
+        &__emptyText {
+            font-size: 28px;
+            font-weight: 400;
         }
     }
 </style>

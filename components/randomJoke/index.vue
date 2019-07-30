@@ -92,6 +92,11 @@
             justify-content: flex-start;
             align-items: center;
             margin-bottom: 20px;
+
+            @include below($phone-wide) {
+                flex-direction: column-reverse;
+                align-items: flex-start;
+            }
         }
 
         &__icon {
@@ -118,6 +123,11 @@
 
             overflow: hidden;
             text-overflow: ellipsis;
+
+            @include below($phone-wide) {
+                margin-left: 0;
+                margin-bottom: 10px;
+            }
         }
     }
 </style>

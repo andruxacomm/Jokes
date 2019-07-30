@@ -33,36 +33,43 @@
         },
 
         async asyncData({store, query, app}) {
-            if (query.hasOwnProperty('q') && query.q !== '') {
-                await store.dispatch('jokes/getData', `query=${query.q}`);
-            } else {
-                let category = '';
-
-                if (query.hasOwnProperty('category') && query.category !== '') {
-                    category = `category=${query.category}`
-                }
-
-                await store.dispatch('jokes/getRandom', category);
+            if (query.hasOwnProperty('search') && query.search !== '') {
+                await store.dispatch('jokes/getData', `query=${query.search}`);
+                return;
             }
+
+            let category = '';
+            if (query.hasOwnProperty('category') && query.category !== '') {
+                category = `category=${query.category}`
+            }
+
+            await store.dispatch('jokes/getRandom', category);
         },
 
         methods: {
             async search(e) {
-                if (e.hasOwnProperty('search')) {
+                if (e.hasOwnProperty('search') && e.search !== '') {
                     await this.$store.dispatch('jokes/getData', `query=${e.search}`);
-
-                    this.$router.push({query: {q: e.search}});
+                    this.pushQuery(e);
+                } else {
+                    this.$router.push({query: {}});
+                    this.$store.commit('jokes/setJokes', null);
+                    await this.$store.dispatch('jokes/getRandom');
                 }
             },
 
             async changeCategory(e) {
-                await this.$store.dispatch('jokes/getRandom', `category=${e}`);
+                if (e !== '') {
+                    await this.$store.dispatch('jokes/getRandom', `category=${e}`);
+                    this.pushQuery({category: e});
+                } else {
+                    this.$router.push({query: {}});
+                }
 
-                this.$router.push({query: {category: e}});
             },
 
-            mergeQuery() {
-
+            pushQuery(pushedQuery) {
+                this.$router.push({query: pushedQuery});
             }
         },
 

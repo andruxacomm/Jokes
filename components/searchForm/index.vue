@@ -31,6 +31,12 @@
             }
         },
 
+        mounted() {
+            if (this.$route.query && this.$route.query.hasOwnProperty('search')) {
+                this.form.search = this.$route.query.search;
+            }
+        },
+
         data() {
             return {
                 form: {

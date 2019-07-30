@@ -53,7 +53,7 @@
 
                     this.pushQuery(e);
                 } else {
-                    this.$router.push({query: {}});
+                    this.pushQuery({});
                     await this.$store.dispatch('jokes/getRandom');
                     this.$store.commit('jokes/setJokes', null);
                 }
@@ -64,7 +64,7 @@
                     await this.$store.dispatch('jokes/getRandom', `category=${e}`);
                     this.pushQuery({category: e});
                 } else {
-                    this.$router.push({query: {}});
+                    this.pushQuery({});
                 }
 
             },
